@@ -14,7 +14,6 @@ import org.smartregister.chw.core.activity.CoreFamilyPlanningMemberProfileActivi
 import org.smartregister.chw.core.activity.CoreFpUpcomingServicesActivity;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.FpUtil;
-import org.smartregister.chw.core.utils.PathfinderFamilyPlanningUtil;
 import org.smartregister.chw.fp.domain.FpMemberObject;
 import org.smartregister.chw.fp.util.FamilyPlanningConstants;
 import org.smartregister.chw.hf.R;
@@ -23,6 +22,7 @@ import org.smartregister.chw.hf.contract.FamilyPlanningMemberProfileContract;
 import org.smartregister.chw.hf.interactor.HfFamilyPlanningProfileInteractor;
 import org.smartregister.chw.hf.presenter.HfFamilyPlanningMemberProfilePresenter;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
+import org.smartregister.domain.AlertStatus;
 import org.smartregister.domain.Task;
 
 import java.text.SimpleDateFormat;
@@ -208,5 +208,10 @@ public class PathfinderFamilyPlanningMemberProfileActivity extends CoreFamilyPla
             Timber.d(e);
         }
         return timePassedString;
+    }
+
+    @Override
+    public void setUpComingServicesStatus(String service, AlertStatus status, Date date) {
+        rlUpcomingServices.setVisibility(View.GONE);
     }
 }
