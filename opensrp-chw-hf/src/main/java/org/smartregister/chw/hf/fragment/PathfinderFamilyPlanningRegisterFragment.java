@@ -22,7 +22,9 @@ import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.QueryGenerator;
 import org.smartregister.chw.core.utils.Utils;
 import org.smartregister.chw.fp.dao.FpDao;
+import org.smartregister.chw.hf.BuildConfig;
 import org.smartregister.chw.hf.activity.FamilyPlanningMemberProfileActivity;
+import org.smartregister.chw.hf.activity.PathfinderFamilyPlanningMemberProfileActivity;
 import org.smartregister.chw.hf.model.PathfinderFamilyPlanningRegisterFragmentModel;
 import org.smartregister.chw.hf.presenter.PathfinderFamilyPlanningRegisterFragmentPresenter;
 import org.smartregister.chw.hf.provider.HfPathfinderFpProvider;
@@ -53,7 +55,11 @@ public class PathfinderFamilyPlanningRegisterFragment extends BasePathfinderFpRe
 
     @Override
     protected void openProfile(CommonPersonObjectClient client) {
-        FamilyPlanningMemberProfileActivity.startFpMemberProfileActivity(getActivity(), FpDao.getMember(client.getCaseId()));
+        if(BuildConfig.BUILD_FOR_PATHFINDER){
+            PathfinderFamilyPlanningMemberProfileActivity.startFpMemberProfileActivity(getActivity(), FpDao.getMember(client.getCaseId()));
+        }else {
+            FamilyPlanningMemberProfileActivity.startFpMemberProfileActivity(getActivity(), FpDao.getMember(client.getCaseId()));
+        }
     }
 
     @Override

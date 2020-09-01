@@ -14,6 +14,7 @@ import org.smartregister.chw.core.application.CoreChwApplication;
 import org.smartregister.chw.core.utils.CoreChildUtils;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.fp.dao.FpDao;
+import org.smartregister.chw.hf.BuildConfig;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.activity.AboveFiveChildProfileActivity;
 import org.smartregister.chw.hf.activity.AllClientsMemberProfileActivity;
@@ -22,6 +23,7 @@ import org.smartregister.chw.hf.activity.ChildProfileActivity;
 import org.smartregister.chw.hf.activity.FamilyOtherMemberProfileActivity;
 import org.smartregister.chw.hf.activity.FamilyPlanningMemberProfileActivity;
 import org.smartregister.chw.hf.activity.MalariaProfileActivity;
+import org.smartregister.chw.hf.activity.PathfinderFamilyPlanningMemberProfileActivity;
 import org.smartregister.chw.hf.activity.PncMemberProfileActivity;
 import org.smartregister.chw.hf.dao.FamilyDao;
 import org.smartregister.chw.hf.model.FamilyDetailsModel;
@@ -124,7 +126,11 @@ public class AllClientsUtils {
     }
 
     private static void goToFamilyPlanningProfile(Activity activity, CommonPersonObjectClient patient) {
-        FamilyPlanningMemberProfileActivity.startFpMemberProfileActivity(activity, FpDao.getMember(patient.getCaseId()));
+        if(BuildConfig.BUILD_FOR_PATHFINDER){
+            PathfinderFamilyPlanningMemberProfileActivity.startFpMemberProfileActivity(activity, FpDao.getMember(patient.getCaseId()));
+        }else {
+            FamilyPlanningMemberProfileActivity.startFpMemberProfileActivity(activity, FpDao.getMember(patient.getCaseId()));
+        }
     }
 
     private static Intent initProfileActivityIntent(Activity activity, CommonPersonObjectClient patient, Bundle bundle, Class clazz) {

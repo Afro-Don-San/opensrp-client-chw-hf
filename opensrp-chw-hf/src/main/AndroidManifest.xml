@@ -86,6 +86,11 @@
             android:theme="@style/HFTheme.NoActionBar" />
 
         <activity
+            android:name="org.smartregister.chw.hf.activity.PathfinderFamilyPlanningMemberProfileActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/HFTheme.NoActionBar" />
+
+        <activity
             android:name="org.smartregister.chw.hf.activity.FamilyRemoveMemberActivity"
             android:theme="@style/HFTheme.NoActionBar" />
 
@@ -152,6 +157,9 @@
             android:theme="@style/HFTheme.NoActionBar" />
         <activity
             android:name=".activity.FpRegisterActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.PathfinderFamilyPlanningRegisterActivity"
             android:theme="@style/HFTheme.NoActionBar" />
         <activity
             android:name=".activity.HfStockInventoryReportActivity"

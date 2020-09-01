@@ -12,7 +12,6 @@ import org.smartregister.chw.fp.model.BaseFpRegisterModel;
 import org.smartregister.chw.fp.util.FamilyPlanningConstants;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.fragment.FpRegisterFragment;
-import org.smartregister.chw.hf.fragment.PathfinderFamilyPlanningRegisterFragment;
 import org.smartregister.chw.hf.interactor.HFFamilyPlanningRegisterInteractor;
 import org.smartregister.chw.hf.presenter.FpRegisterPresenter;
 import org.smartregister.family.util.JsonFormUtils;
@@ -64,8 +63,7 @@ public class FpRegisterActivity extends CoreFpRegisterActivity {
 
     @Override
     protected BaseRegisterFragment getRegisterFragment() {
-        return new PathfinderFamilyPlanningRegisterFragment();
-//        return new FpRegisterFragment();
+        return new FpRegisterFragment();
     }
 
     @Override
