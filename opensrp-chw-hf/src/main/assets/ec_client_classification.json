@@ -328,6 +328,86 @@
               "ec_tb_community_feedback"
             ]
           }
+        ,
+          {
+            "field": "eventType",
+            "field_value": "Introduction to Family Planning",
+            "creates_case": [
+              "ec_family_planning"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "Family Planning Pregnancy Screening",
+            "creates_case": [
+              "ec_family_planning"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "Family Planning Pregnancy Test Referral Followup",
+            "creates_case": [
+              "ec_family_planning"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "Family Planning Method Choice",
+            "creates_case": [
+              "ec_family_planning"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "Give Family Planning Method",
+            "creates_case": [
+              "ec_family_planning"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "Risk assessment, HIV testing & Dual protection counseling",
+            "creates_case": [
+              "ec_family_planning"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "FP Method Referral",
+            "creates_case": [
+              "ec_referral",
+              "ec_family_planning"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "Family Planning Method Refill Referral",
+            "creates_case": [
+              "ec_referral",
+              "ec_family_planning"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "FP Follow up visit Counselling",
+            "creates_case": [
+              "ec_family_planning"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "Citizen Report Card",
+            "creates_case": [
+              "ec_family_planning"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "Pregnancy Test Referral",
+            "creates_case": [
+              "ec_family_planning"
+            ]
+          }
         ]
       }
     }

@@ -8,8 +8,10 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 
+import org.apache.commons.lang3.StringUtils;
 import org.json.JSONObject;
 import org.smartregister.chw.core.activity.BaseReferralTaskViewActivity;
+import org.smartregister.chw.core.utils.ChildDBConstants;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.CoreReferralUtils;
 import org.smartregister.chw.hf.BuildConfig;
@@ -21,6 +23,7 @@ import org.smartregister.clientandeventmodel.Obs;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.domain.Task;
 import org.smartregister.family.FamilyLibrary;
+import org.smartregister.family.util.DBConstants;
 import org.smartregister.family.util.Utils;
 import org.smartregister.opd.utils.OpdDbConstants;
 import org.smartregister.repository.AllSharedPreferences;
@@ -205,6 +208,34 @@ public class ReferralTaskViewActivity extends BaseReferralTaskViewActivity imple
                 return CoreConstants.REGISTER_TYPE.FAMILY_PLANNING;
             default:
                 return "";
+        }
+    }
+
+    @Override
+    protected void getReferralDetails() {
+        if (getPersonObjectClient() != null && getTask() != null) {
+            clientReferralProblem.setText(getTask().getFocus());
+            String clientAge = (Utils.getTranslatedDate(Utils.getDuration(Utils.getValue(getPersonObjectClient().getColumnmaps(), DBConstants.KEY.DOB, false)), getBaseContext()));
+            clientName.setText(getString(org.smartregister.chw.core.R.string.client_name_age_suffix, name, clientAge));
+            referralDate.setText(org.smartregister.chw.core.utils.Utils.dd_MMM_yyyy.format(getTask().getExecutionStartDate().toDate()));
+
+            //Hide Care giver for clients other than CHILD
+            careGiverLayout.setVisibility(View.GONE);
+            if (getTask().getFocus().equalsIgnoreCase(CoreConstants.TASKS_FOCUS.SICK_CHILD)) {
+                careGiverLayout.setVisibility(View.VISIBLE);
+                String parentFirstName = Utils.getValue(getPersonObjectClient().getColumnmaps(), ChildDBConstants.KEY.FAMILY_FIRST_NAME, true);
+                String parentLastName = Utils.getValue(getPersonObjectClient().getColumnmaps(), ChildDBConstants.KEY.FAMILY_LAST_NAME, true);
+                String parentMiddleName = Utils.getValue(getPersonObjectClient().getColumnmaps(), ChildDBConstants.KEY.FAMILY_MIDDLE_NAME, true);
+                String parentName = getString(org.smartregister.chw.core.R.string.care_giver_prefix, org.smartregister.util.Utils.getName(parentFirstName, parentMiddleName + " " + parentLastName));
+                careGiverName.setText(parentName);
+            }
+
+            String familyMemberContacts = getFamilyMemberContacts();
+            careGiverPhone.setText(familyMemberContacts.isEmpty() ? getString(org.smartregister.chw.core.R.string.phone_not_provided) : familyMemberContacts);
+
+            chwDetailsNames.setText(getTask().getRequester());
+
+//            addGaDisplay();
         }
     }
 }

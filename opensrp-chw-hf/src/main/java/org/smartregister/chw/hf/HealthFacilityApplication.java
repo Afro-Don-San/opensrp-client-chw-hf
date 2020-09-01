@@ -191,6 +191,8 @@ public class HealthFacilityApplication extends CoreChwApplication implements Cor
         MalariaLibrary.init(context, getRepository(), BuildConfig.VERSION_CODE, BuildConfig.DATABASE_VERSION);
         FpLibrary.init(context, getRepository(), BuildConfig.VERSION_CODE, BuildConfig.DATABASE_VERSION);
 
+        com.adosa.opensrp.chw.fp.PathfinderFpLibrary.init(context, getRepository(), BuildConfig.VERSION_CODE, BuildConfig.DATABASE_VERSION);
+
         //Setup hiv library
         HivLibrary.init(this);
         HivLibrary.getInstance().setAppVersion(BuildConfig.VERSION_CODE);
