@@ -14,6 +14,7 @@ import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.domain.Task;
 
 import java.util.Calendar;
+import java.util.List;
 
 public class HfReferralUtils extends CoreReferralUtils {
 
@@ -27,6 +28,23 @@ public class HfReferralUtils extends CoreReferralUtils {
                     R.string.referral_day, getReferralPeriod(referralTask.getExecutionStartDate()));
             textViewReferralDay.setText(referralDay);
         } else {
+            textViewReferralDay.setVisibility(View.GONE);
+        }
+    }
+
+    public static void displayReferralDayByReferralTypes(CommonPersonObjectClient client, List<String> referralTypes, TextView textViewReferralDay) {
+        boolean hasReferralTasks = false;
+        for(String referralType:referralTypes){
+            Task referralTask = getLatestClientReferralTask(client.entityId(), referralType);
+            if (referralTask.getExecutionStartDate() != null) {
+                textViewReferralDay.setVisibility(View.VISIBLE);
+                String referralDay = textViewReferralDay.getContext().getResources().getString(
+                        R.string.referral_day, getReferralPeriod(referralTask.getExecutionStartDate()));
+                textViewReferralDay.setText(referralDay);
+                hasReferralTasks = true;
+            }
+        }
+        if (!hasReferralTasks) {
             textViewReferralDay.setVisibility(View.GONE);
         }
     }

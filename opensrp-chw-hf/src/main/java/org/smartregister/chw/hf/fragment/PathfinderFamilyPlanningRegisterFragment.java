@@ -11,13 +11,11 @@ import androidx.loader.content.CursorLoader;
 import androidx.loader.content.Loader;
 
 import com.adosa.opensrp.chw.fp.fragment.BasePathfinderFpRegisterFragment;
-import com.adosa.opensrp.chw.fp.util.PathfinderFamilyPlanningConstants;
 
 import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.Nullable;
 import org.smartregister.chw.anc.util.DBConstants;
 import org.smartregister.chw.core.custom_views.NavigationMenu;
-import org.smartregister.chw.core.provider.CorePathfinderFpProvider;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.QueryGenerator;
 import org.smartregister.chw.core.utils.Utils;
@@ -33,7 +31,9 @@ import org.smartregister.cursoradapter.RecyclerViewPaginatedAdapter;
 import org.smartregister.view.customcontrols.CustomFontTextView;
 
 import java.text.MessageFormat;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Set;
 
 import timber.log.Timber;
@@ -45,6 +45,34 @@ public class PathfinderFamilyPlanningRegisterFragment extends BasePathfinderFpRe
     private View dueOnlyLayout;
     private boolean dueFilterActive = false;
 
+    public static String getReferralDueFilter(String tableName, List<String> taskFocuses) {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(
+                " SELECT distinct (task.for) ")
+                .append(" FROM task ")
+                .append(" INNER JOIN %t ON %t.base_entity_id = task.for ")
+                .append(" WHERE task.business_status = 'Referred' ")
+                .append("  AND task.status = 'READY' ")
+                .append("  AND %t.is_closed is  '0' ");
+
+        for (int i = 0; i < taskFocuses.size(); i++) {
+            if (i == 0) {
+                stringBuilder.append(" AND ( task.focus = '" + taskFocuses.get(i) + "'");
+            } else {
+                stringBuilder.append(" OR task.focus = '" + taskFocuses.get(i) + "'");
+            }
+        }
+
+        if (taskFocuses.size() > 0)
+            stringBuilder.append(" ) ");
+
+        String filterQuery = stringBuilder.toString().replace("%t", tableName);
+
+        Timber.e("Coze :: filter query = " + filterQuery);
+
+        return filterQuery;
+    }
+
     @Override
     protected void initializePresenter() {
         if (getActivity() == null) {
@@ -55,9 +83,9 @@ public class PathfinderFamilyPlanningRegisterFragment extends BasePathfinderFpRe
 
     @Override
     protected void openProfile(CommonPersonObjectClient client) {
-        if(BuildConfig.BUILD_FOR_PATHFINDER){
+        if (BuildConfig.BUILD_FOR_PATHFINDER) {
             PathfinderFamilyPlanningMemberProfileActivity.startFpMemberProfileActivity(getActivity(), FpDao.getMember(client.getCaseId()));
-        }else {
+        } else {
             FamilyPlanningMemberProfileActivity.startFpMemberProfileActivity(getActivity(), FpDao.getMember(client.getCaseId()));
         }
     }
@@ -277,7 +305,15 @@ public class PathfinderFamilyPlanningRegisterFragment extends BasePathfinderFpRe
     }
 
     public String getDueCondition() {
-        return PathfinderFamilyPlanningConstants.DBConstants.FAMILY_PLANNING_TABLE + ".base_entity_id in (select base_entity_id from schedule_service where strftime('%Y-%m-%d') BETWEEN due_date and ifnull(expiry_date,strftime('%Y-%m-%d')) and schedule_name = '" + CoreConstants.SCHEDULE_TYPES.FP_VISIT + "' and ifnull(not_done_date,'') = '' and ifnull(completion_date,'') = '' )  ";
+        List<String> referralTypes = new ArrayList<>();
+        referralTypes.add(CoreConstants.TASKS_FOCUS.ANC_DANGER_SIGNS);
+        referralTypes.add(CoreConstants.TASKS_FOCUS.FP_SIDE_EFFECTS);
+        referralTypes.add(CoreConstants.TASKS_FOCUS.PREGNANCY_TEST);
+        referralTypes.add(CoreConstants.TASKS_FOCUS.FP_METHOD);
+
+        return " " + CoreConstants.TABLE_NAME.FP_MEMBER + ".base_entity_id in ("
+                + getReferralDueFilter(CoreConstants.TABLE_NAME.FP_MEMBER, referralTypes)
+                + ")";
     }
 
     protected void dueFilter(View dueOnlyLayout) {

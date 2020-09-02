@@ -22,6 +22,8 @@ import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.util.Utils;
 import org.smartregister.view.contract.SmartRegisterClient;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import timber.log.Timber;
@@ -72,9 +74,13 @@ public class HfPathfinderFpProvider extends CorePathfinderFpProvider {
     }
 
     private void showLatestPncReferralDay(CommonPersonObjectClient client, HfRegisterViewHolder viewHolder) {
-        HfReferralUtils.displayReferralDay(client, CoreConstants.TASKS_FOCUS.FP_SIDE_EFFECTS, viewHolder.textViewReferralDay);
-        HfReferralUtils.displayReferralDay(client, CoreConstants.TASKS_FOCUS.PREGNANCY_TEST, viewHolder.textViewReferralDay);
-        HfReferralUtils.displayReferralDay(client, CoreConstants.TASKS_FOCUS.FP_METHOD, viewHolder.textViewReferralDay);
+        List<String> referralTypes = new ArrayList<>();
+        referralTypes.add(CoreConstants.TASKS_FOCUS.ANC_DANGER_SIGNS);
+        referralTypes.add(CoreConstants.TASKS_FOCUS.FP_SIDE_EFFECTS);
+        referralTypes.add(CoreConstants.TASKS_FOCUS.PREGNANCY_TEST);
+        referralTypes.add(CoreConstants.TASKS_FOCUS.FP_METHOD);
+
+        HfReferralUtils.displayReferralDayByReferralTypes(client, referralTypes, viewHolder.textViewReferralDay);
     }
 
     private void populatePatientColumn(CommonPersonObjectClient pc, PathfinderFpMemberObject pathfinderFpMemberObject, final RegisterViewHolder viewHolder) {
@@ -87,7 +93,7 @@ public class HfPathfinderFpProvider extends CorePathfinderFpProvider {
             int age = new Period(new DateTime(dobString), new DateTime()).getYears();
 
             String patientName = getName(firstName, pathfinderFpMemberObject.getLastName());
-            String methodAccepted  = com.adosa.opensrp.chw.fp.util.FpUtil.getTranslatedMethodValue(pathfinderFpMemberObject.getFpMethod(), context);
+            String methodAccepted = com.adosa.opensrp.chw.fp.util.FpUtil.getTranslatedMethodValue(pathfinderFpMemberObject.getFpMethod(), context);
 
             viewHolder.patientName.setText(patientName + ", " + age);
 
