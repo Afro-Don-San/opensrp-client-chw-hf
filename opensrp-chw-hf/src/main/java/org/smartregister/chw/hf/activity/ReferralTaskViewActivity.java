@@ -187,7 +187,11 @@ public class ReferralTaskViewActivity extends BaseReferralTaskViewActivity imple
     public void onClick(View view) {
         if (view.getId() == R.id.view_profile) {
             personObjectClient.getDetails().put(OpdDbConstants.KEY.REGISTER_TYPE, mapTaskFocusToRegisterType());
-            AllClientsUtils.goToClientProfile(this, personObjectClient);
+            try {
+                AllClientsUtils.goToClientProfile(this, personObjectClient);
+            }catch (Exception e){
+                Timber.e(e);
+            }
         } else if (view.getId() == R.id.mark_ask_done) {
             closeReferral();
         }

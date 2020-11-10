@@ -147,7 +147,12 @@ public class PathfinderFamilyPlanningMemberProfileActivity extends CoreFamilyPla
         String fpDisplayDate = "";
         if (StringUtils.isNotEmpty(fpStartDate) || StringUtils.isNotEmpty(fpRegistrationDate)) {
             if (StringUtils.isNotEmpty(fpStartDate))
-                fpDisplayDate = String.valueOf(formatTime(Long.parseLong(fpStartDate)));
+                try {
+                    fpDisplayDate = String.valueOf(formatTime(Long.parseLong(fpStartDate)));
+                }catch (Exception e){
+                    Timber.e(e);
+                    fpDisplayDate = fpStartDate;
+                }
             else
                 fpDisplayDate = String.valueOf(fpRegistrationDate);
         }
