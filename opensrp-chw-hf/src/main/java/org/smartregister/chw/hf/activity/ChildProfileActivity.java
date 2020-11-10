@@ -133,13 +133,19 @@ public class ChildProfileActivity extends CoreChildProfileActivity {
                 }
                 return true;
             case R.id.action_malaria_diagnosis:
-                displayShortToast(R.string.clicked_malaria_diagnosis);
+              //  displayShortToast(R.string.clicked_malaria_diagnosis);
+                startHfMalariaFollowupForm();
                 return true;
             default:
                 break;
         }
         return super.onOptionsItemSelected(item);
     }
+
+    private void startHfMalariaFollowupForm() {
+        MalariaFollowUpVisitActivityHelper.startMalariaFollowUpActivity(this, memberObject.getBaseEntityId());
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -197,7 +203,6 @@ public class ChildProfileActivity extends CoreChildProfileActivity {
     private void prepareFab() {
         familyFloatingMenu.fab.setOnClickListener(v -> FamilyCallDialogFragment.launchDialog(
                 this, ((HfChildProfilePresenter) presenter).getFamilyId()));
-
     }
 
     @Override

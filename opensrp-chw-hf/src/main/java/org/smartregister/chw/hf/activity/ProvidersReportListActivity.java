@@ -39,8 +39,8 @@ public class ProvidersReportListActivity extends SecuredActivity {
         List<String> arrayList = new LinkedList<>();
         List<String> providers = new ArrayList<>();
         arrayList.add(this.getString(R.string.all_chw));
-        if (stockUsageReportUtils.getPreviousMonths().size() > 0) {
-            for (Map.Entry<String, String> entry : stockUsageReportUtils.getPreviousMonths().entrySet()) {
+        if (stockUsageReportUtils.getPreviousMonths(this).size() > 0) {
+            for (Map.Entry<String, String> entry : stockUsageReportUtils.getPreviousMonths(this).entrySet()) {
                 providers.addAll(getDBProviders(entry.getKey(), entry.getValue()));
             }
         }

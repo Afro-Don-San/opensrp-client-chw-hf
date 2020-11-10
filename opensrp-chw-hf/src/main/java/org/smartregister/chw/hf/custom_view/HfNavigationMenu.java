@@ -6,6 +6,7 @@ import android.content.Intent;
 import org.apache.commons.lang3.tuple.Pair;
 import org.smartregister.chw.core.custom_views.NavigationMenu;
 import org.smartregister.chw.core.utils.CoreConstants;
+import org.smartregister.chw.hf.activity.HfHIA2ReportsActivity;
 import org.smartregister.chw.hf.activity.ProvidersReportListActivity;
 import org.smartregister.chw.hf.activity.ServiceActivity;
 
@@ -39,6 +40,11 @@ public class HfNavigationMenu implements NavigationMenu.Flavour {
     }
 
     @Override
+    public boolean hasCommunityResponders() {
+        return false;
+    }
+
+    @Override
     public Intent getStockReportIntent(Activity activity) {
         return new Intent(activity, ProvidersReportListActivity.class);
     }
@@ -46,5 +52,15 @@ public class HfNavigationMenu implements NavigationMenu.Flavour {
     @Override
     public Intent getServiceReportIntent(Activity activity) {
         return new Intent(activity, ServiceActivity.class);
+    }
+
+    @Override
+    public String childNavigationMenuCountString() {
+        return null;
+    }
+
+    @Override
+    public Intent getHIA2ReportActivityIntent(Activity activity) {
+        return new Intent(activity, HfHIA2ReportsActivity.class);
     }
 }

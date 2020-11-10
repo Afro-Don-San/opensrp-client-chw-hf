@@ -2,6 +2,7 @@ package org.smartregister.chw.hf.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.view.Menu;
 import android.view.View;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,6 +12,7 @@ import org.smartregister.chw.core.activity.CoreFamilyPlanningMemberProfileActivi
 import org.smartregister.chw.core.activity.CoreFpUpcomingServicesActivity;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.FpUtil;
+import org.smartregister.chw.fp.dao.FpDao;
 import org.smartregister.chw.fp.domain.FpMemberObject;
 import org.smartregister.chw.fp.util.FamilyPlanningConstants;
 import org.smartregister.chw.hf.R;
@@ -18,6 +20,7 @@ import org.smartregister.chw.hf.adapter.ReferralCardViewAdapter;
 import org.smartregister.chw.hf.contract.FamilyPlanningMemberProfileContract;
 import org.smartregister.chw.hf.interactor.HfFamilyPlanningProfileInteractor;
 import org.smartregister.chw.hf.presenter.HfFamilyPlanningMemberProfilePresenter;
+import org.smartregister.chw.malaria.dao.MalariaDao;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.domain.Task;
 
@@ -54,8 +57,23 @@ public class FamilyPlanningMemberProfileActivity extends CoreFamilyPlanningMembe
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(org.smartregister.chw.core.R.menu.family_planning_member_profile_menu, menu);
+        if (MalariaDao.isRegisteredForMalaria(fpMemberObject.getBaseEntityId())) {
+            menu.findItem(R.id.action_malaria_followup_visit).setVisible(true);
+            menu.findItem(R.id.action_malaria_diagnosis).setVisible(false);
+        } else {
+            menu.findItem(R.id.action_malaria_diagnosis).setVisible(true);
+        }
+        return true;
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
+        if (fpMemberObject == null && commonPersonObjectClient != null) {
+            fpMemberObject = FpDao.getMember(commonPersonObjectClient.getCaseId());
+        }
         ((FamilyPlanningMemberProfileContract.Presenter) fpProfilePresenter).fetchReferralTasks();
         if (notificationAndReferralRecyclerView != null && notificationAndReferralRecyclerView.getAdapter() != null) {
             notificationAndReferralRecyclerView.getAdapter().notifyDataSetChanged();
@@ -115,6 +133,11 @@ public class FamilyPlanningMemberProfileActivity extends CoreFamilyPlanningMembe
     }
 
     @Override
+    protected void startMalariaRegister() {
+        //Implements from Super
+    }
+
+    @Override
     protected void removeMember() {
         // Not required for HF (as seen in other profile activities)?
     }
@@ -133,4 +156,16 @@ public class FamilyPlanningMemberProfileActivity extends CoreFamilyPlanningMembe
     public void notifyHasPhone(boolean b) {
         // TODO -> Implement for HF
     }
+
+
+    @Override
+    protected void startMalariaFollowUpVisit() {
+        // TODO -> Implement for HF
+    }
+
+    @Override
+    protected void startHfMalariaFollowupForm() {
+        MalariaFollowUpVisitActivityHelper.startMalariaFollowUpActivity(this, fpMemberObject.getBaseEntityId());
+    }
+
 }

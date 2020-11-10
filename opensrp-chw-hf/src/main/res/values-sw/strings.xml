@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Kituoni</string>
+    <string name="logo">Nembo</string>
+    <string name="login_title">USAID Boresha Afya\nKituo cha Afya</string>
+    <string name="nav_logo">USAID Boresha Afya Kituo cha Afya</string>
+    <string name="due_only">Amepewa rufaa</string>
+
+    <string name="clicked_sick_child">Umebonyeza kitendo cha ufuatiliaji wa mtoto mgonjwa</string>
+    <string name="clicked_malaria_diagnosis">Umebonyeza kitendo cha utambuzi wa malaria</string>
+    <string name="referral_for">Rufaa kwa %s</string>
+    <string name="full_referral_info">Angalia taarifa za rufaa</string>
+    <string name="back_to_referrals">Rudi kwa rufaa</string>
+    <string name="mark_done">Imefanyika</string>
+    <string name="mark_as_done">Imefanyika</string>
+    <string name="view_profile">Angalia taarifa za huyu</string>
+    <string name="chw_phone">Simu ya Mja</string>
+    <string name="chw">Mja</string>
+    <string name="referral_date">Tarehe ya rufaa</string>
+    <string name="problem">Tatizo</string>
+    <string name="phone">Simu</string>
+    <string name="client_name_age_suffix">%s, %s</string>
+    <string name="mark_as_done_title">Imefanyika?</string>
+    <string name="mark_as_done_message">Rufaa itafungwa na haitakwepo.</string>
+    <string name="phone_not_provided">Namba ya simu haijatolewa</string>
+    <string name="anc_danger_sign_prefix">Dalili za hatari wakati la ujazito; Dalili: %s</string>
+    <string name="referral_day">Rufaa %s iliyopita</string>
+    <string name="fp_update_family_planning">Update usajili wa uzazi wa mpango</string>
+    <string name="error_opening_profile">Tatizo kufungua taarifa za mteja</string>
+    <string name="family">Kaya ya %s</string>
+</resources>

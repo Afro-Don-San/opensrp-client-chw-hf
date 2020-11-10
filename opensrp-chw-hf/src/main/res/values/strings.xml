@@ -26,4 +26,5 @@
     <string name="referral_day">Referral %s ago</string>
     <string name="fp_update_family_planning">Update Family planning Registration</string>
     <string name="error_opening_profile">Error opening client\'s profile</string>
+    <string name="family">%s Family</string>
 </resources>

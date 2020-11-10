@@ -9,6 +9,7 @@ import org.smartregister.chw.core.activity.CoreStockInventoryReportActivity;
 import org.smartregister.chw.core.model.MonthStockUsageModel;
 import org.smartregister.chw.core.model.StockUsageItemModel;
 import org.smartregister.chw.core.utils.CoreConstants;
+import org.smartregister.chw.core.utils.StockUsageReportUtils;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.adapter.HfStockUsageItemAdapter;
 import org.smartregister.chw.hf.dao.HfStockUsageReportDao;
@@ -55,7 +56,7 @@ public class InAppInventoryReportActivity extends CoreStockInventoryReportActivi
 
     @Override
     protected void reloadRecycler(MonthStockUsageModel selected) {
-        String stockMonth = stockUsageReportUtils.getMonthNumber(selected.getMonth().substring(0, 3));
+        String stockMonth = StockUsageReportUtils.getMonthNumber(selected.getMonth().substring(0, 3));
         String stockYear = selected.getYear();
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);

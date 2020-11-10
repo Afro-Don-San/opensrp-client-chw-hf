@@ -6,6 +6,7 @@ import org.smartregister.chw.core.activity.CoreStockInventoryReportActivity;
 import org.smartregister.chw.core.dao.StockUsageReportDao;
 import org.smartregister.chw.core.model.StockUsageItemModel;
 import org.smartregister.chw.core.utils.CoreConstants;
+import org.smartregister.chw.core.utils.StockUsageReportUtils;
 import org.smartregister.chw.hf.R;
 
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ public class HfStockInventoryReportActivity extends CoreStockInventoryReportActi
         List<StockUsageItemModel> stockUsageItemModelsList = new ArrayList<>();
         for (String item : getItems()) {
             String usage = providerName.equalsIgnoreCase(this.getString(R.string.all_chw)) ? StockUsageReportDao.getAllStockUsageForMonth(month, item, year) : StockUsageReportDao.getStockUsageForMonth(month, item, year, providerName);
-            stockUsageItemModelsList.add(new StockUsageItemModel(stockUsageReportUtils.getFormattedItem(item), stockUsageReportUtils.getUnitOfMeasure(item), usage, providerName));
+            stockUsageItemModelsList.add(new StockUsageItemModel(StockUsageReportUtils.getFormattedItem(item, this), StockUsageReportUtils.getUnitOfMeasure(item, this), usage, providerName));
         }
         return stockUsageItemModelsList;
     }

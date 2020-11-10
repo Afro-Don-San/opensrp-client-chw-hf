@@ -122,6 +122,21 @@ public class PathfinderFamilyPlanningMemberProfileActivity extends CoreFamilyPla
     }
 
     @Override
+    protected void startMalariaRegister() {
+        // TODO -> Implement for HF
+    }
+
+    @Override
+    protected void startMalariaFollowUpVisit() {
+        // TODO -> Implement for HF
+    }
+
+    @Override
+    protected void startHfMalariaFollowupForm() {
+        // TODO -> Implement for HF
+    }
+
+    @Override
     protected void removeMember() {
         // Not required for HF (as seen in other profile activities)?
     }

@@ -54,7 +54,7 @@
     }
   },
   "step1": {
-    "title": "Change or Stop FP form",
+    "title": "Badilisha au acha fomu ya uzazi wa mpango",
     "next": "step2",
     "fields": [
       {
@@ -84,28 +84,28 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "164901AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
         "openmrs_entity_parent": "",
-        "label": "Reason the man is stopping his current family planning method",
+        "label": "Sababu za kuacha kutumia njia za uzazi wa mpango ya sasa",
         "options": [
           {
             "key": "side_effects",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "164154AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
             "openmrs_entity_parent": "",
-            "text": "Side-effects"
+            "text": "Madhara"
           },
           {
             "key": "wants_to_conceive",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "160571AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
             "openmrs_entity_parent": "",
-            "text": "Wants to conceive"
+            "text": "Anataka mimba"
           },
           {
             "key": "doesnt_want_to_use_anymore",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "164260AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
             "openmrs_entity_parent": "",
-            "text": "Doesn't want to use anymore"
+            "text": "Hataki kutumia sasa "
           },
           {
             "key": "decided_to_change_method",
@@ -113,19 +113,19 @@
             "openmrs_entity_id": "163494AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
             "openmrs_entity_parent": "",
             "value": false,
-            "text": "Decided to change method"
+            "text": "Aliamua kubadilisha mpango wa uzazi"
           },
           {
             "key": "others",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
             "openmrs_entity_parent": "",
-            "text": "Others"
+            "text": "Nyingine"
           }
         ],
         "v_required": {
           "value": "true",
-          "err": "Please select one option"
+          "err": "Tafadhali chagua chaguo moja"
         }
       },
       {
@@ -135,10 +135,10 @@
         "openmrs_entity_id": "other_reason_fp_chw",
         "openmrs_entity_parent": "164901AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
         "edit_type": "name",
-        "hint": "Other reason",
+        "hint": "Sababu nyingine",
         "v_required": {
           "value": "true",
-          "err": "Required"
+          "err": "Ni lazima kuingiza sababu nyingine"
         },
         "relevance": {
           "rules-engine": {
@@ -155,10 +155,10 @@
         "openmrs_entity_id": "side_effects_fp",
         "openmrs_entity_parent": "164154AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
         "edit_type": "name",
-        "hint": "Side effects",
+        "hint": "Madhara",
         "v_required": {
           "value": "true",
-          "err": "Required"
+          "err": "Ni lazima kuingiza madhara"
         },
         "relevance": {
           "rules-engine": {
@@ -171,7 +171,7 @@
     ]
   },
   "step2": {
-    "title": "Family planning method",
+    "title": "Njia ya uzazi wa mpango",
     "fields": [
       {
         "key": "fp_method_accepted",
@@ -179,13 +179,13 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "fp_method_accepted",
         "type": "spinner",
-        "hint": "Family planning method selected",
+        "hint": "Njia za uzazi wa mpango selected",
         "values": [
-          "Male condom",
-          "Female condom",
-          "Male sterilization"
+          "Kondomu ya kiume",
+          "Kondomu ya kike",
+          "Kufunga kizazi mwanamme"
         ],
-          "keys": [
+        "keys": [
           "Male condom",
           "Female condom",
           "Male sterilization"
@@ -197,7 +197,7 @@
         },
         "v_required": {
           "value": "true",
-          "err": "Please select one choice"
+          "err": "Tafadhali chagua chaguo moja"
         },
         "relevance": {
           "rules-engine": {
@@ -214,18 +214,18 @@
         "openmrs_entity_id": "no_condoms",
         "type": "edit_text",
         "edit_type": "number",
-        "hint": "How many condoms was he given?",
+        "hint": "Amepata vipande vya kondpmu vingapi?",
         "v_required": {
           "value": "true",
-          "err": "Equal or greater than 0"
+          "err": "Sawa au kubwa kuliko 0"
         },
         "v_numeric_integer": {
           "value": "true",
-          "err": "Must be a rounded number"
+          "err": "Lazima iwe nambari iliyo na mviringo"
         },
         "v_min": {
           "value": "0",
-          "err": "Number must be equal or greater than 0"
+          "err": "Nambari lazima iwe sawa au kubwa kuliko 0"
         },
         "relevance": {
           "rules-engine": {
@@ -256,10 +256,10 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "counselling_use",
         "type": "spinner",
-        "hint": "Was he counselled on how to use the family planning method?",
+        "hint": "Je, ameshauri jinsi ya kutumia njia za uzazi wa mpango aliyochagua?",
         "values": [
-          "Yes",
-          "No"
+          "Ndiyo",
+          "Hapana"
         ],
         "keys": [
           "Yes",
@@ -271,7 +271,7 @@
         },
         "v_required": {
           "value": "true",
-          "err": "Please select one choice"
+          "err": "Tafadhali chagua chaguo moja"
         },
         "relevance": {
           "rules-engine": {
@@ -287,7 +287,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "fp_start_male_ster",
         "type": "date_picker",
-        "hint": "Date of male sterilization",
+        "hint": "Tarehe ya kufunga kizazi cha mwanamume",
         "max_date": "today",
         "relevance": {
           "rules-engine": {
@@ -298,7 +298,7 @@
         },
         "v_required": {
           "value": "true",
-          "err": "Required"
+          "err": "Ni lazima kuingiza tarehe ya kufunga kizazi cha mwanamume"
         }
       },
       {
@@ -322,8 +322,8 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "",
         "type": "toaster_notes",
-        "text": "Advise the man to use condoms for the first 3 months to prevent pregnancy",
-        "toaster_info_text": "Advise the man to use condoms for the first 3 months to prevent pregnancy",
+        "text": "Tumia kondomu kwa miezi mitatu kuzuia ujazito",
+        "toaster_info_text": "Tumia kondomu kwa miezi mitatu kuzuia ujazito",
         "toaster_type": "info",
         "relevance": {
           "rules-engine": {

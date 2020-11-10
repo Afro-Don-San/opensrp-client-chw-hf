@@ -51,4 +51,9 @@ public class FpRegisterFragment extends CoreFpRegisterFragment {
                 + HfReferralUtils.getReferralDueFilter(CoreConstants.TABLE_NAME.FP_MEMBER, CoreConstants.TASKS_FOCUS.FP_SIDE_EFFECTS)
                 + ")";
     }
+
+    @Override
+    protected void openFollowUpVisit(CommonPersonObjectClient client) {
+        //Do nothing - no Family Planning Followup visits for Health Facility
+    }
 }

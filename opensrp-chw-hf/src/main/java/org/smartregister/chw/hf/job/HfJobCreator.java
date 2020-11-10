@@ -48,8 +48,9 @@ public class HfJobCreator implements JobCreator {
                 return new LocationStructureServiceJob();
             case SyncTaskServiceJob.TAG:
                 return new SyncTaskServiceJob(HfSyncTaskIntentService.class);
-            case PlanIntentServiceJob.TAG:
-                return new PlanIntentServiceJob();
+            //TODO Include plan intent service when implementation is done on the server
+       /*     case PlanIntentServiceJob.TAG:
+                return new PlanIntentServiceJob();*/
             case SyncTaskWithClientEventsServiceJob.TAG:
                 return new SyncTaskWithClientEventsServiceJob(SyncClientEventsPerTaskIntentService.class);
             case CloseExpiredReferralsServiceJob.TAG:

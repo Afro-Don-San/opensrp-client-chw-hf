@@ -1,0 +1,748 @@
+{
+  "validate_on_submit": false,
+  "show_errors_on_submit": false,
+  "count": "2",
+  "encounter_type": "Family Planning Change Method",
+  "entity_id": "",
+  "relational_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "today": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "encounter",
+      "openmrs_entity_id": "encounter_date"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": "",
+    "look_up": {
+      "entity_id": "",
+      "value": ""
+    }
+  },
+  "step1": {
+    "title": "Badilisha au acha fomu ya uzazi wa mpango",
+    "next": "step2",
+    "fields": [
+      {
+        "key": "fp_change_or_stop_date",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "fp_change_or_stop_date",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "family_planning_change_method_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "age",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "age",
+        "type": "hidden"
+      },
+      {
+        "key": "reason_stop_fp_chw",
+        "type": "native_radio",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "164901AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "openmrs_entity_parent": "",
+        "label": "Sababu za kuacha kutumia njia za uzazi wa mpango ya sasa",
+        "options": [
+          {
+            "key": "side_effects",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "164154AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "openmrs_entity_parent": "",
+            "text": "Madhara"
+          },
+          {
+            "key": "wants_to_conceive",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "160571AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "openmrs_entity_parent": "",
+            "text": "Anataka mimba"
+          },
+          {
+            "key": "doesnt_want_to_use_anymore",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "164260AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "openmrs_entity_parent": "",
+            "text": "Hataki kutumia sasa"
+          },
+          {
+            "key": "menopause",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "134346AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "openmrs_entity_parent": "",
+            "text": "Kukoma kwa uzazi"
+          },
+          {
+            "key": "decided_to_change_method",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "163494AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "openmrs_entity_parent": "",
+            "value": false,
+            "text": "Aliamua kubadilisha mpango wa uzazi"
+          },
+          {
+            "key": "others",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "openmrs_entity_parent": "",
+            "text": "Nyingine"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua chaguo moja"
+        }
+      },
+      {
+        "key": "other_reason_fp_chw",
+        "type": "edit_text",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_reason_fp_chw",
+        "openmrs_entity_parent": "164901AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "edit_type": "name",
+        "hint": "Sababu nyingine",
+        "v_required": {
+          "value": "true",
+          "err": "Ingiza sababu nyingine"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "family_planning_change_method_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "side_effects_fp",
+        "type": "edit_text",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "side_effects_fp",
+        "openmrs_entity_parent": "164154AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "edit_type": "name",
+        "hint": "Madhara",
+        "v_required": {
+          "value": "true",
+          "err": "Ingiza madhara"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "family_planning_change_method_relevance.yml"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "step2": {
+    "title": "Njia ya uzazi wa mpango",
+    "fields": [
+      {
+        "key": "fp_method_accepted",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "fp_method_accepted",
+        "type": "spinner",
+        "hint": "Njia za uzazi wa mpango selectedd",
+        "values": [
+          "Kondomu ya kiume",
+          "Kondomu ya kike",
+          "Vidonge vya kumeza vyenye vichocheo viwili (COC)",
+          "Vidonge vya kumeza vyenye vichocheo kimoja (POP)",
+          "Shanga",
+          "Sindano",
+          "Kitanzi",
+          "Kipandikizi cha miaka 3",
+          "Vipandikizi vya miaka 5",
+          "Kufunga kizazi mwanamke",
+          "Kufunga kizazi mwanamme"
+        ],
+        "keys": [
+          "Male condom",
+          "Female condom",
+          "COC",
+          "POP",
+          "Standard day method",
+          "Injectable",
+          "IUCD",
+          "Implanon - NXT",
+          "Jadelle",
+          "Female sterilization",
+          "Male sterilization"
+        ],
+        "openmrs_choice_ids": {
+          "Male condom": "164813AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "Female condom": "164814AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "COC": "159783AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "POP": "159784AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "Standard day method": "5277AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "Injectable": "5279AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "IUCD": "5275AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "Implanon - NXT": "76022AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "Jadelle": "1873AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "Female sterilization": "5276AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "Male sterilization": "1489AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua chaguo moja"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "family_planning_change_method_relevance.yml"
+            }
+          }
+        }
+      },
+
+      {
+        "key": "no_condoms",
+        "openmrs_entity_parent": "190AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "no_condoms",
+        "type": "edit_text",
+        "edit_type": "number",
+        "hint": "Amepata vipande vya kondpmu vingapi?",
+        "v_required": {
+          "value": "true",
+          "err": "Sawa au kubwa kuliko 0"
+        },
+        "v_numeric_integer": {
+          "value": "true",
+          "err": "Lazima iwe nambari iliyo na mviringo"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "Nambari lazima iwe sawa au kubwa kuliko 0"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "family_planning_change_method_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "fp_start_condom",
+        "openmrs_entity_parent": "190AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "fp_start_condom",
+        "type": "edit_text",
+        "hidden": "true",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "family_planning_change_method_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "no_pillcycles",
+        "openmrs_entity_parent": "5274AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "163171AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "type": "edit_text",
+        "edit_type": "number",
+        "hint": "Amepata saiko ngapi?",
+        "v_required": {
+          "value": "true",
+          "err": "Sawa au kubwa kuliko 0"
+        },
+        "v_numeric_integer": {
+          "value": "true",
+          "err": "Lazima iwe nambari iliyo na mviringo"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "Nambari lazima iwe sawa au kubwa kuliko 0"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "family_planning_change_method_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "fp_start_cocpop",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "fp_start_cocpop",
+        "type": "date_picker",
+        "hint": "Je, alianza au anapanga kuanza vidonge vya kumeza vyenye vichocheo viwili au kimoja lini?",
+        "max_date": "today",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "family_planning_change_method_relevance.yml"
+            }
+          }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Ingiza tarehe ambao anapanga kuanza vidonge vya kumeza vyenye vichocheo viwili au kimoja"
+        }
+      },
+      {
+        "key": "counselling_use",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "counselling_use",
+        "type": "spinner",
+        "hint": "Je, mteja ameshauri jinsi ya kutumia njia za uzazi wa mpango aliyochagua?",
+        "values": [
+          "Ndiyo",
+          "Hapana"
+        ],
+        "keys": [
+          "Yes",
+          "No"
+        ],
+        "openmrs_choice_ids": {
+          "Yes": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "No": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua chaguo moja"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "family_planning_change_method_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "fp_start_injectable",
+        "openmrs_entity_parent": "5279AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "162881AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "type": "date_picker",
+        "hint": "Tarehe ya sindano iliyopita",
+        "max_date": "today",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "family_planning_change_method_relevance.yml"
+            }
+          }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Tarehe ya sindano iliyopita"
+        }
+      },
+      {
+        "key": "next_injection_due_date",
+        "openmrs_entity_parent": "5279AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "openmrs_entity": "5096AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "openmrs_entity_id": "next_injection_due_date",
+        "type": "edit_text",
+        "hint": "Tarehe ya sindano ijayo:",
+        "read_only": "true",
+        "value": "0",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "family_planning_change_method_relevance.yml"
+            }
+          }
+        },
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "family_planning_change_method_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "fp_start_iucd",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "fp_start_iucd",
+        "type": "date_picker",
+        "hint": "Tarehe ya kuweka kitanzi",
+        "max_date": "today",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "family_planning_change_method_relevance.yml"
+            }
+          }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Ingiza tarehe ya kuweka kitanzi"
+        }
+      },
+      {
+        "key": "iucd_removal",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "iucd_removal",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "family_planning_change_method_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "fp_start_implant_nxt",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "fp_start_implant_nxt",
+        "type": "date_picker",
+        "hint": "Tarehe ya kuweka kipandikizi cha miaka 3",
+        "max_date": "today",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "family_planning_change_method_relevance.yml"
+            }
+          }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Ingiza tarehe ya kuweka kipandikizi cha miaka 3"
+        }
+      },
+      {
+        "key": "implanon_nxt_removal",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "implanon_nxt_removal",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "family_planning_change_method_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "fp_start_implant_jad",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "fp_start_implant_jad",
+        "type": "date_picker",
+        "hint": "Tarehe ya kuweka vipandikizi vya miaka 5",
+        "max_date": "today",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "family_planning_change_method_relevance.yml"
+            }
+          }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Ingiza tarehe ya kuweka vipandikizi vya miaka 5"
+        }
+      },
+      {
+        "key": "jadelle_removal",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "jadelle_removal",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "family_planning_change_method_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "fp_start_female_ster",
+        "openmrs_entity_parent": "5276AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "fp_start_female_ster",
+        "type": "date_picker",
+        "hint": "Tarehe y kufunga kizazi mwanmke",
+        "max_date": "today",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "family_planning_change_method_relevance.yml"
+            }
+          }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Ingiza tarehe y kufunga kizazi mwanmke"
+        }
+      },
+      {
+        "key": "fp_start_male_ster",
+        "openmrs_entity_parent": "1489AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "fp_start_male_ster",
+        "type": "date_picker",
+        "hint": "Tarehe ya kufunga kizazi mwanamume ya mume wake",
+        "max_date": "today",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "family_planning_change_method_relevance.yml"
+            }
+          }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Ingiza tarehe ya kufunga kizazi mwanamume ya mume wake"
+        }
+      },
+      {
+        "key": "fp_start_date",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "163526AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "type": "edit_text",
+        "hidden": "true",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "family_planning_change_method_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "injection_due_note",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "type": "toaster_notes",
+        "text": "Tarehe ya sindano ijayo: {next_injection_due_date}",
+        "toaster_info_text": "Tarehe ya sindano ijayo: {next_injection_due_date}",
+        "toaster_type": "info",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "family_planning_change_method_relevance.yml"
+            }
+          }
+        },
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "family_planning_change_method_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "injection_symptoms",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "type": "toaster_notes",
+        "text": "Mwambie mwanamke achunguze dalili zifuatazo:\n- Kutokwa (usaha, damu) kwenye tovuti ya sindano\n- SPumba au mkono wa zabuni kwenye tovuti ya sindano",
+        "toaster_info_text": "Mwambie mwanamke achunguze dalili zifuatazo:\n- Kutokwa (usaha, damu) kwenye tovuti ya sindano\n- SPumba au mkono wa zabuni kwenye tovuti ya sindano",
+        "toaster_type": "info",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "family_planning_change_method_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "iucd_removal_note",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "type": "toaster_notes",
+        "text": "Tarehe kutoa: {iucd_removal}",
+        "toaster_info_text": "Tarehe kutoa: {iucd_removal}",
+        "toaster_type": "info",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "family_planning_change_method_relevance.yml"
+            }
+          }
+        },
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "family_planning_change_method_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "iucd_symptoms",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "type": "toaster_notes",
+        "text": "Mwambie mwanamke achunguze yafuatayo na anaweza kurudi ikiwa kuna yoyote: \n- Ikiwa na kinga ya nje au IUCD ndani ya uke\n- Muongozi wa kuangalia IUCD kwenye pedi yake mara atakibadilisha\n- Ima ni mimes ina ukaguzi unakadiriwa ili kuona ikiwa IUCD inafukuzwa",
+        "toaster_info_text": "Mwambie mwanamke achunguze yafuatayo na anaweza kurudi ikiwa kuna yoyote: \n- Ikiwa na kinga ya nje au IUCD ndani ya uke\n- Muongozi wa kuangalia IUCD kwenye pedi yake mara atakibadilisha\n- Ima ni mimes ina ukaguzi unakadiriwa ili kuona ikiwa IUCD inafukuzwa",
+        "toaster_type": "info",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "family_planning_change_method_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "implanon_removal_note",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "type": "toaster_notes",
+        "text": "Tarehe kutoa: {implanon_nxt_removal}",
+        "toaster_info_text": "Tarehe kutoa: {implanon_nxt_removal}",
+        "toaster_type": "info",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "family_planning_change_method_relevance.yml"
+            }
+          }
+        },
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "family_planning_change_method_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "jadelle_removal_note",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "type": "toaster_notes",
+        "text": "Tarehe kutoa: {jadelle_removal}",
+        "toaster_info_text": "Tarehe kutoa: {jadelle_removal}",
+        "toaster_type": "info",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "family_planning_change_method_relevance.yml"
+            }
+          }
+        },
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "family_planning_change_method_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "implant_symptoms",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "type": "toaster_notes",
+        "text": "Mwambie mwanamke achungushe yafuatayo na arudi ikiwa kuna yoyote.  \n- Kama kunakuwa na fimbo nje. \n- Mkono wa kuvimba na / au kutokwa kwa tovuti",
+        "toaster_info_text": "Mwambie mwanamke achungushe yafuatayo na arudi ikiwa kuna yoyote.  \n- Kama kunakuwa na fimbo nje. \n- Mkono wa kuvimba na / au kutokwa kwa tovuti",
+        "toaster_type": "info",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "family_planning_change_method_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "fem_sterialization_symptoms",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "type": "toaster_notes",
+        "text": "Mwambie mwanamke arudi ikiwa:\n- Kuvimba, zabuni na kutokwa na maji machafu",
+        "toaster_info_text": "Mwambie mwanamke arudi ikiwa:\n- Kuvimba, zabuni na kutokwa na maji machafu",
+        "toaster_type": "info",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "family_planning_change_method_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "fp_male_ster_note",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "type": "toaster_notes",
+        "text": "Tumia kondomu kwa miezi mitatu kuzuia ujazito",
+        "toaster_info_text": "Tumia kondomu kwa miezi mitatu kuzuia ujazito",
+        "toaster_type": "info",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "family_planning_change_method_relevance.yml"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

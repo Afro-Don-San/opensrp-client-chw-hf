@@ -41,13 +41,9 @@ public class ServiceActivityAdapter extends RecyclerView.Adapter<ServiceActivity
     public void onBindViewHolder(@NonNull ServiceActivityViewHolder holder, int position) {
         String Item = serviceItems.get(position);
         holder.serviceItem.setText(Item);
-        holder.view.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                Intent intent = getIntent(context, Item);
-                context.startActivity(intent);
-            }
+        holder.view.setOnClickListener(v -> {
+            Intent intent = getIntent(context, Item);
+            context.startActivity(intent);
         });
     }
 

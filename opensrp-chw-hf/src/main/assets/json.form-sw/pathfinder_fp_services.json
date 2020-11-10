@@ -5,91 +5,91 @@
       "openmrs_entity": "concept",
       "openmrs_entity_id": "",
       "openmrs_entity_parent": "",
-      "text": "None"
+      "text": "Hajapewa njia yoyote"
     },
     {
       "key": "male_condom",
       "openmrs_entity": "concept",
       "openmrs_entity_id": "",
       "openmrs_entity_parent": "",
-      "text": "Male Condom"
+      "text": "Kondomu ya kiume"
     },
     {
       "key": "female_condom",
       "openmrs_entity": "concept",
       "openmrs_entity_id": "",
       "openmrs_entity_parent": "",
-      "text": "Female Condom"
+      "text": "Kondomu ya kike"
     },
     {
       "key": "coc",
       "openmrs_entity": "concept",
       "openmrs_entity_id": "",
       "openmrs_entity_parent": "",
-      "text": "Combined oral contraceptives (COC)"
+      "text": "Vichocheo viwili (COC)"
     },
     {
       "key": "pop",
       "openmrs_entity": "concept",
       "openmrs_entity_id": "",
       "openmrs_entity_parent": "",
-      "text": "Progestin only pills"
+      "text": "Kichocheo kimoja (POP)"
     },
     {
       "key": "sdm",
       "openmrs_entity": "concept",
       "openmrs_entity_id": "",
       "openmrs_entity_parent": "",
-      "text": "Standard days method(SDM)"
+      "text": "Kuhesabu siku"
     },
     {
       "key": "lam",
       "openmrs_entity": "concept",
       "openmrs_entity_id": "",
       "openmrs_entity_parent": "",
-      "text": "Lactational amenorrhea method (LAM)"
+      "text": "Njia ya kunyonyesha (LAM)"
     },
     {
       "key": "emergency_contraception",
       "openmrs_entity": "concept",
       "openmrs_entity_id": "",
       "openmrs_entity_parent": "",
-      "text": "Emergency Contraception"
+      "text": "Vidonge vya Dharura"
     },
     {
       "key": "implants",
       "openmrs_entity": "concept",
       "openmrs_entity_id": "",
       "openmrs_entity_parent": "",
-      "text": "Implants"
+      "text": "Kipandikizi"
     },
     {
       "key": "injection",
       "openmrs_entity": "concept",
       "openmrs_entity_id": "",
       "openmrs_entity_parent": "",
-      "text": "Injection"
+      "text": "Sindano"
     },
     {
       "key": "iud",
       "openmrs_entity": "concept",
       "openmrs_entity_id": "",
       "openmrs_entity_parent": "",
-      "text": "Intrauterine device (IUD)"
+      "text": "Kitanzi"
     },
     {
       "key": "vasectomy",
       "openmrs_entity": "concept",
       "openmrs_entity_id": "",
       "openmrs_entity_parent": "",
-      "text": "Vasectomy"
+      "text": "Kufunga uzazi wanaume"
     },
     {
       "key": "tubal_ligation",
       "openmrs_entity": "concept",
       "openmrs_entity_id": "",
       "openmrs_entity_parent": "",
-      "text": "Tubal Ligation"
+      "text": "Kufunga uzazi wanawake "
     }
   ]
 }

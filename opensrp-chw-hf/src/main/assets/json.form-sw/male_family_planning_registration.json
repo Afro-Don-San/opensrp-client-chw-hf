@@ -2,7 +2,7 @@
   "validate_on_submit": false,
   "show_errors_on_submit": false,
   "count": "2",
-  "encounter_type": "Family Planning Change Method",
+  "encounter_type": "Family Planning Registration",
   "entity_id": "",
   "relational_id": "",
   "metadata": {
@@ -54,19 +54,31 @@
     }
   },
   "step1": {
-    "title": "Change or Stop FP form",
+    "title": "Maelezo ya usajili wa uzazi wa mpango",
     "next": "step2",
     "fields": [
       {
-        "key": "fp_change_or_stop_date",
+        "key": "sync_location_id",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "person_attribute",
+        "openmrs_entity_id": "sync_location_id",
+        "type": "spinner",
+        "hint": "Tafadhali chagua eneo la CHW",
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua eno la CHW"
+        }
+      },
+      {
+        "key": "fp_reg_date",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "fp_change_or_stop_date",
+        "openmrs_entity_id": "fp_reg_date",
         "type": "hidden",
         "calculation": {
           "rules-engine": {
             "ex-rules": {
-              "rules-file": "family_planning_change_method_calculation.yml"
+              "rules-file": "family_planning_registration_calculation.yml"
             }
           }
         }
@@ -79,99 +91,65 @@
         "type": "hidden"
       },
       {
-        "key": "reason_stop_fp_chw",
+        "key": "couselling_fp_methods",
         "type": "native_radio",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "164901AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "openmrs_entity_id": "1382AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
         "openmrs_entity_parent": "",
-        "label": "Reason the man is stopping his current family planning method",
+        "label": "Je, alishauriwa kwa njia tofauti za uzazi wa mpango?",
         "options": [
           {
-            "key": "side_effects",
+            "key": "yes",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "164154AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "openmrs_entity_id": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
             "openmrs_entity_parent": "",
-            "text": "Side-effects"
+            "text": "Ndiyo"
           },
           {
-            "key": "wants_to_conceive",
+            "key": "no",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "160571AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "openmrs_entity_id": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
             "openmrs_entity_parent": "",
-            "text": "Wants to conceive"
-          },
-          {
-            "key": "doesnt_want_to_use_anymore",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "164260AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-            "openmrs_entity_parent": "",
-            "text": "Doesn't want to use anymore"
-          },
-          {
-            "key": "decided_to_change_method",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "163494AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-            "openmrs_entity_parent": "",
-            "value": false,
-            "text": "Decided to change method"
-          },
-          {
-            "key": "others",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-            "openmrs_entity_parent": "",
-            "text": "Others"
+            "text": "Hapana"
           }
         ],
         "v_required": {
           "value": "true",
-          "err": "Please select one option"
+          "err": "Tafadhali chagua chaguo moja"
         }
       },
       {
-        "key": "other_reason_fp_chw",
-        "type": "edit_text",
+        "key": "couselling_HIV_STI",
+        "type": "native_radio",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "other_reason_fp_chw",
-        "openmrs_entity_parent": "164901AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-        "edit_type": "name",
-        "hint": "Other reason",
+        "openmrs_entity_id": "couselling_HIV_STI",
+        "openmrs_entity_parent": "",
+        "label": "Je, alishauriwa kuhusu kuzuia VVU na magonjwa ya zinaa?",
+        "options": [
+          {
+            "key": "yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "openmrs_entity_parent": "",
+            "text": "Ndiyo"
+          },
+          {
+            "key": "no",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "openmrs_entity_parent": "",
+            "text": "Hapana"
+          }
+        ],
         "v_required": {
           "value": "true",
-          "err": "Required"
-        },
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "family_planning_change_method_relevance.yml"
-            }
-          }
-        }
-      },
-      {
-        "key": "side_effects_fp",
-        "type": "edit_text",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "side_effects_fp",
-        "openmrs_entity_parent": "164154AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-        "edit_type": "name",
-        "hint": "Side effects",
-        "v_required": {
-          "value": "true",
-          "err": "Required"
-        },
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "family_planning_change_method_relevance.yml"
-            }
-          }
+          "err": "Tafadhali chagua chaguo moja"
         }
       }
     ]
   },
   "step2": {
-    "title": "Family planning method",
+    "title": "Njia ya uzazi wa mpango",
     "fields": [
       {
         "key": "fp_method_accepted",
@@ -179,13 +157,13 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "fp_method_accepted",
         "type": "spinner",
-        "hint": "Family planning method selected",
+        "hint": "Njia za uzazi wa mpango selected",
         "values": [
-          "Male condom",
-          "Female condom",
-          "Male sterilization"
+          "Kondomu ya kiume",
+          "Kondomu ya kike",
+          "Kufunga kizazi mwanamme"
         ],
-          "keys": [
+        "keys": [
           "Male condom",
           "Female condom",
           "Male sterilization"
@@ -197,12 +175,19 @@
         },
         "v_required": {
           "value": "true",
-          "err": "Please select one choice"
-        },
-        "relevance": {
+          "err": "Tafadhali chagua chaguo moja"
+        }
+      },
+      {
+        "key": "ecp",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "ecp",
+        "type": "hidden",
+        "calculation": {
           "rules-engine": {
             "ex-rules": {
-              "rules-file": "family_planning_change_method_relevance.yml"
+              "rules-file": "family_planning_registration_calculation.yml"
             }
           }
         }
@@ -214,23 +199,23 @@
         "openmrs_entity_id": "no_condoms",
         "type": "edit_text",
         "edit_type": "number",
-        "hint": "How many condoms was he given?",
+        "hint": "Amepata vipande vya kondpmu vingapi?",
         "v_required": {
           "value": "true",
-          "err": "Equal or greater than 0"
+          "err": "Sawa au kubwa kuliko 0"
         },
         "v_numeric_integer": {
           "value": "true",
-          "err": "Must be a rounded number"
+          "err": "Lazima iwe nambari iliyo na mviringo"
         },
         "v_min": {
           "value": "0",
-          "err": "Number must be equal or greater than 0"
+          "err": "Nambari lazima iwe sawa au kubwa kuliko 0"
         },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
-              "rules-file": "family_planning_change_method_relevance.yml"
+              "rules-file": "family_planning_registration_relevance.yml"
             }
           }
         }
@@ -241,11 +226,11 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "fp_start_condom",
         "type": "edit_text",
-        "hidden": "true",
+        "hidden": true,
         "calculation": {
           "rules-engine": {
             "ex-rules": {
-              "rules-file": "family_planning_change_method_calculation.yml"
+              "rules-file": "family_planning_registration_calculation.yml"
             }
           }
         }
@@ -256,10 +241,10 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "counselling_use",
         "type": "spinner",
-        "hint": "Was he counselled on how to use the family planning method?",
+        "hint": "Je, ameshauri jinsi ya kutumia njia za uzazi wa mpango aliyochagua?",
         "values": [
-          "Yes",
-          "No"
+          "Ndiyo",
+          "Hapana"
         ],
         "keys": [
           "Yes",
@@ -271,12 +256,12 @@
         },
         "v_required": {
           "value": "true",
-          "err": "Please select one choice"
+          "err": "Tafadhali chagua chaguo moja"
         },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
-              "rules-file": "family_planning_change_method_relevance.yml"
+              "rules-file": "family_planning_registration_relevance.yml"
             }
           }
         }
@@ -287,18 +272,35 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "fp_start_male_ster",
         "type": "date_picker",
-        "hint": "Date of male sterilization",
+        "hint": "Tarehe ya kufunga kizazi cha mwanamume",
         "max_date": "today",
         "relevance": {
           "rules-engine": {
             "ex-rules": {
-              "rules-file": "family_planning_change_method_relevance.yml"
+              "rules-file": "family_planning_registration_relevance.yml"
             }
           }
         },
         "v_required": {
           "value": "true",
-          "err": "Required"
+          "err": "Ni lazime kuingiza tarehe ya kufunga kizazi cha mwanamume"
+        }
+      },
+      {
+        "key": "fp_male_ster_note",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "type": "toaster_notes",
+        "text": "Tumia kondomu kwa miezi mitatu kuzuia ujazito",
+        "toaster_info_text": "Tumia kondomu kwa miezi mitatu kuzuia ujazito",
+        "toaster_type": "info",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "family_planning_registration_relevance.yml"
+            }
+          }
         }
       },
       {
@@ -311,24 +313,7 @@
         "calculation": {
           "rules-engine": {
             "ex-rules": {
-              "rules-file": "family_planning_change_method_calculation.yml"
-            }
-          }
-        }
-      },
-      {
-        "key": "fp_male_ster_note",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "",
-        "type": "toaster_notes",
-        "text": "Advise the man to use condoms for the first 3 months to prevent pregnancy",
-        "toaster_info_text": "Advise the man to use condoms for the first 3 months to prevent pregnancy",
-        "toaster_type": "info",
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "family_planning_change_method_relevance.yml"
+              "rules-file": "family_planning_registration_calculation.yml"
             }
           }
         }

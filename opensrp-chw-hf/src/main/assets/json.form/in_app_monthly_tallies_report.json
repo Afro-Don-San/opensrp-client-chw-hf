@@ -1,6 +1,6 @@
 {
   "count": "1",
-  "encounter_type": "Vitamin A",
+  "encounter_type": "HF Monthly tallies Report",
   "entity_id": "",
   "metadata": {
     "start": {
@@ -47,22 +47,61 @@
     "encounter_location": ""
   },
   "step1": {
-    "title": "Vitamin A {0} dose",
+    "title": "Monthly Tallies",
     "fields": [
       {
-        "key": "vitamin_a{0}_date",
-        "openmrs_entity_parent": "84879AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "key": "indicator_code",
+        "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "1418AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-        "type": "date_picker",
-        "image": "ic_form_vitamin",
-        "hint": "Dozi ya Vitamini A ya {0} ilifanyika lini?",
-        "min_date": "today-120y",
-        "max_date": "today",
-        "v_required": {
-          "value": "true",
-          "err": "Tafadhali ingiza tarehe ya dozi ya Vitamini A"
-        }
+        "openmrs_entity_id": "indicator_code",
+        "type": "edit_text",
+        "hint": "Indicator code",
+        "value": ""
+      },
+      {
+        "key": "month",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "month",
+        "type": "edit_text",
+        "hint": "Month",
+        "value": ""
+      },
+      {
+        "key": "edited",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "edited",
+        "type": "edit_text",
+        "hint": "edited",
+        "value": ""
+      },
+      {
+        "key": "date_sent",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "date_sent",
+        "type": "edit_text",
+        "hint": "Date sent",
+        "value": ""
+      },
+      {
+        "key": "created_at",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "created_at",
+        "type": "edit_text",
+        "hint": "Created at",
+        "value": ""
+      },
+      {
+        "key": "value",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "value",
+        "type": "edit_text",
+        "hint": "Updated at",
+        "value": ""
       }
     ]
   }
