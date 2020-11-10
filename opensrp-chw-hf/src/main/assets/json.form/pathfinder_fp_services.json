@@ -1,0 +1,95 @@
+{
+  "fp_service": [
+    {
+      "key": "male_condom",
+      "openmrs_entity": "concept",
+      "openmrs_entity_id": "",
+      "openmrs_entity_parent": "",
+      "text": "Male Condom"
+    },
+    {
+      "key": "female_condom",
+      "openmrs_entity": "concept",
+      "openmrs_entity_id": "",
+      "openmrs_entity_parent": "",
+      "text": "Female Condom"
+    },
+    {
+      "key": "coc",
+      "openmrs_entity": "concept",
+      "openmrs_entity_id": "",
+      "openmrs_entity_parent": "",
+      "text": "Combined oral contraceptives (COC)"
+    },
+    {
+      "key": "pop",
+      "openmrs_entity": "concept",
+      "openmrs_entity_id": "",
+      "openmrs_entity_parent": "",
+      "text": "Progestin only pills"
+    },
+    {
+      "key": "sdm",
+      "openmrs_entity": "concept",
+      "openmrs_entity_id": "",
+      "openmrs_entity_parent": "",
+      "text": "Standard days method(SDM)"
+    },
+    {
+      "key": "lam",
+      "openmrs_entity": "concept",
+      "openmrs_entity_id": "",
+      "openmrs_entity_parent": "",
+      "text": "Lactational amenorrhea method (LAM)"
+    },
+    {
+      "key": "emergency_contraception",
+      "openmrs_entity": "concept",
+      "openmrs_entity_id": "",
+      "openmrs_entity_parent": "",
+      "text": "Emergency Contraception"
+    },
+    {
+      "key": "implants",
+      "openmrs_entity": "concept",
+      "openmrs_entity_id": "",
+      "openmrs_entity_parent": "",
+      "text": "Implants"
+    },
+    {
+      "key": "injection",
+      "openmrs_entity": "concept",
+      "openmrs_entity_id": "",
+      "openmrs_entity_parent": "",
+      "text": "Injection"
+    },
+    {
+      "key": "iud",
+      "openmrs_entity": "concept",
+      "openmrs_entity_id": "",
+      "openmrs_entity_parent": "",
+      "text": "Intrauterine device (IUD)"
+    },
+    {
+      "key": "vasectomy",
+      "openmrs_entity": "concept",
+      "openmrs_entity_id": "",
+      "openmrs_entity_parent": "",
+      "text": "Vasectomy"
+    },
+    {
+      "key": "tubal_ligation",
+      "openmrs_entity": "concept",
+      "openmrs_entity_id": "",
+      "openmrs_entity_parent": "",
+      "text": "Tubal Ligation"
+    },
+    {
+      "key": "none",
+      "openmrs_entity": "concept",
+      "openmrs_entity_id": "",
+      "openmrs_entity_parent": "",
+      "text": "None"
+    }
+  ]
+}

@@ -156,52 +156,53 @@ public class PathfinderFamilyPlanningMemberProfileActivity extends CoreFamilyPla
             else
                 fpDisplayDate = String.valueOf(fpRegistrationDate);
         }
-        String insertionText = getString(com.adosa.opensrp.chw.fp.R.string.fp_insertion);
-        String startedText = getString(com.adosa.opensrp.chw.fp.R.string.fp_started);
-        String onText = getString(com.adosa.opensrp.chw.fp.R.string.fp_on);
+        String fpMethodName = "";
 
         switch (fpMethod) {
             case PathfinderFamilyPlanningConstants.DBConstants.FP_POP:
-                fpMethodDisplayText = getString(com.adosa.opensrp.chw.fp.R.string.pop) + " " + startedText;
+                fpMethodName = getString(com.adosa.opensrp.chw.fp.R.string.pop);
                 break;
             case PathfinderFamilyPlanningConstants.DBConstants.FP_COC:
-                fpMethodDisplayText = getString(com.adosa.opensrp.chw.fp.R.string.coc) + " " + startedText;
+                fpMethodName = getString(com.adosa.opensrp.chw.fp.R.string.coc);
                 break;
             case PathfinderFamilyPlanningConstants.DBConstants.FP_FEMALE_CONDOM:
-                fpMethodDisplayText = getString(com.adosa.opensrp.chw.fp.R.string.female_condom) + " " + startedText;
+                fpMethodName = getString(com.adosa.opensrp.chw.fp.R.string.female_condom);
                 break;
             case PathfinderFamilyPlanningConstants.DBConstants.FP_MALE_CONDOM:
-                fpMethodDisplayText = getString(com.adosa.opensrp.chw.fp.R.string.male_condom) + " " + startedText;
+                fpMethodName = getString(com.adosa.opensrp.chw.fp.R.string.male_condom);
                 break;
             case PathfinderFamilyPlanningConstants.DBConstants.FP_INJECTABLE:
-                fpMethodDisplayText = getString(com.adosa.opensrp.chw.fp.R.string.injectable) + " " + startedText;
+                fpMethodName = getString(com.adosa.opensrp.chw.fp.R.string.injectable);
                 break;
             case PathfinderFamilyPlanningConstants.DBConstants.FP_IUD:
-                fpMethodDisplayText = getString(com.adosa.opensrp.chw.fp.R.string.iud) + " " + insertionText;
+                fpMethodName = getString(com.adosa.opensrp.chw.fp.R.string.iud);
                 break;
             case PathfinderFamilyPlanningConstants.DBConstants.FP_VASECTOMY:
-                fpMethodDisplayText = getString(com.adosa.opensrp.chw.fp.R.string.vasectomy);
+                fpMethodName = getString(com.adosa.opensrp.chw.fp.R.string.vasectomy);
                 break;
             case PathfinderFamilyPlanningConstants.DBConstants.FP_TUBAL_LIGATION:
-                fpMethodDisplayText = getString(com.adosa.opensrp.chw.fp.R.string.tubal_ligation);
+                fpMethodName = getString(com.adosa.opensrp.chw.fp.R.string.tubal_ligation);
                 break;
             case PathfinderFamilyPlanningConstants.DBConstants.FP_LAM:
-                fpMethodDisplayText = getString(com.adosa.opensrp.chw.fp.R.string.lam) + " " + insertionText;
+                fpMethodName = getString(com.adosa.opensrp.chw.fp.R.string.lam);
                 break;
             case PathfinderFamilyPlanningConstants.DBConstants.FP_IMPLANTS:
-                fpMethodDisplayText = getString(com.adosa.opensrp.chw.fp.R.string.implants) + " " + insertionText;
+                fpMethodName = getString(com.adosa.opensrp.chw.fp.R.string.implants);
                 break;
             case PathfinderFamilyPlanningConstants.DBConstants.FP_SDM:
-                fpMethodDisplayText = getString(com.adosa.opensrp.chw.fp.R.string.standard_day_method) + " " + startedText;
-                break;
-            case "0": //TODO coze update empty fp method to ""
-                fpMethodDisplayText = getString(com.adosa.opensrp.chw.fp.R.string.registered) + " ";
+                fpMethodName = getString(com.adosa.opensrp.chw.fp.R.string.standard_day_method);
                 break;
             default:
-                fpMethodDisplayText = fpMethod + " " + getString(com.adosa.opensrp.chw.fp.R.string.fp_started) + " " + onText;
+                fpMethodName = fpMethod;
         }
 
-        return fpMethodDisplayText + " " + onText + " " + fpDisplayDate;
+        fpMethodDisplayText = getString(com.adosa.opensrp.chw.fp.R.string.fp_method_started, fpMethodName, fpDisplayDate);
+
+        if(fpMethod.equals("0")){
+            fpMethodDisplayText = getString(com.adosa.opensrp.chw.fp.R.string.registered) + " "+fpDisplayDate;
+        }
+
+        return fpMethodDisplayText;
     }
 
     private CharSequence formatTime(long timestamp) {

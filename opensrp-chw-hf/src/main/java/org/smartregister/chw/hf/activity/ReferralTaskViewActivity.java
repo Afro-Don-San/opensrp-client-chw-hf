@@ -5,10 +5,16 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 
-import org.apache.commons.lang3.StringUtils;
+import com.vijay.jsonwizard.utils.FormUtils;
+
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.core.activity.BaseReferralTaskViewActivity;
 import org.smartregister.chw.core.utils.ChildDBConstants;
@@ -33,13 +39,18 @@ import org.smartregister.util.JsonFormUtils;
 import org.smartregister.view.customcontrols.CustomFontTextView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 import timber.log.Timber;
 
 import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
 
 public class ReferralTaskViewActivity extends BaseReferralTaskViewActivity implements View.OnClickListener {
+
+    JSONObject serviceProvided;
+    JSONArray servicesArray = new JSONArray();
 
     public static void startReferralTaskViewActivity(Activity activity, CommonPersonObjectClient personObjectClient, Task task, String startingActivity) {
         ReferralTaskViewActivity.personObjectClient = personObjectClient;
@@ -112,7 +123,53 @@ public class ReferralTaskViewActivity extends BaseReferralTaskViewActivity imple
     private void closeReferralDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(getString(R.string.mark_as_done_title));
-        builder.setMessage(getString(R.string.mark_as_done_message));
+        final View customLayout = getLayoutInflater().inflate(R.layout.dialogue_close_referral, null);
+        builder.setView(customLayout);
+
+        Spinner servicesSpinner = (Spinner) customLayout.findViewById(R.id.spinner);
+        JSONObject services;
+        List<String> servicesList = new ArrayList<String>();
+        try {
+            services = (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, "pathfinder_fp_services");
+            servicesArray = services.getJSONArray("fp_service");
+
+            if (servicesArray != null) {
+                for (int i = 0; i < servicesArray.length(); i++) {
+                    servicesList.add(servicesArray.getJSONObject(i).getString("text"));
+                }
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+        // Spinner click listener
+        servicesSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                try {
+                    serviceProvided = servicesArray.getJSONObject(i);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
+        // Creating adapter for spinner
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, servicesList);
+
+        // Drop down layout style - list view with radio button
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // attaching data adapter to spinner
+        servicesSpinner.setAdapter(dataAdapter);
+
         builder.setCancelable(true);
 
         builder.setPositiveButton(this.getString(R.string.mark_done), (dialog, id) -> {
@@ -155,6 +212,9 @@ public class ReferralTaskViewActivity extends BaseReferralTaskViewActivity imple
             baseEvent.addObs((new Obs()).withFormSubmissionField(CoreConstants.FORM_CONSTANTS.FORM_SUBMISSION_FIELD.REFERRAL_TASK_PREVIOUS_BUSINESS_STATUS).withValue(getTask().getBusinessStatus())
                     .withFieldCode(CoreConstants.FORM_CONSTANTS.FORM_SUBMISSION_FIELD.REFERRAL_TASK_PREVIOUS_BUSINESS_STATUS).withFieldType("formsubmissionField").withFieldDataType("text").withParentCode("").withHumanReadableValues(new ArrayList<>()));
 
+            baseEvent.addObs((new Obs()).withFormSubmissionField("service_provided").withValue(serviceProvided.getString("key"))
+                    .withFieldCode("service_provided").withFieldType("formsubmissionField").withFieldDataType("text").withParentCode("").withHumanReadableValues(Arrays.asList(new String[]{serviceProvided.getString("text")})));
+
             org.smartregister.chw.hf.utils.JsonFormUtils.tagSyncMetadata(Utils.context().allSharedPreferences(), baseEvent);// tag docs
 
             //setting the location uuid of the referral initiator so that to allow the event to sync back to the chw app since it sync data by location.
@@ -189,7 +249,7 @@ public class ReferralTaskViewActivity extends BaseReferralTaskViewActivity imple
             personObjectClient.getDetails().put(OpdDbConstants.KEY.REGISTER_TYPE, mapTaskFocusToRegisterType());
             try {
                 AllClientsUtils.goToClientProfile(this, personObjectClient);
-            }catch (Exception e){
+            } catch (Exception e) {
                 Timber.e(e);
             }
         } else if (view.getId() == R.id.mark_ask_done) {
