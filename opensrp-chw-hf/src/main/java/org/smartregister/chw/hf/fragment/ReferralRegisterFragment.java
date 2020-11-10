@@ -10,17 +10,22 @@ import com.google.android.gms.vision.barcode.Barcode;
 import org.apache.commons.lang3.StringUtils;
 import org.smartregister.AllConstants;
 import org.smartregister.chw.core.fragment.BaseReferralRegisterFragment;
+import org.smartregister.chw.core.provider.BaseReferralRegisterProvider;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.Utils;
 import org.smartregister.chw.hf.HealthFacilityApplication;
 import org.smartregister.chw.hf.activity.ReferralTaskViewActivity;
 import org.smartregister.chw.hf.presenter.ReferralFragmentPresenter;
+import org.smartregister.chw.hf.provider.HfPathfinderReferralRegisterProvider;
 import org.smartregister.commonregistry.CommonFtsObject;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
+import org.smartregister.cursoradapter.RecyclerViewPaginatedAdapter;
 import org.smartregister.cursoradapter.SmartRegisterQueryBuilder;
 import org.smartregister.domain.Task;
 import org.smartregister.family.util.DBConstants;
 import org.smartregister.view.activity.BaseRegisterActivity;
+
+import java.util.Set;
 
 import timber.log.Timber;
 
@@ -32,6 +37,15 @@ public class ReferralRegisterFragment extends BaseReferralRegisterFragment {
     public Handler handler = new Handler();
     private ReferralFragmentPresenter referralFragmentPresenter;
     private CommonPersonObjectClient commonPersonObjectClient;
+
+    @Override
+    public void initializeAdapter(Set<org.smartregister.configurableviews.model.View> visibleColumns, String tableName) {
+        HfPathfinderReferralRegisterProvider registerProvider = new HfPathfinderReferralRegisterProvider(getActivity(), registerActionHandler, paginationViewHandler);
+        clientAdapter = new RecyclerViewPaginatedAdapter(null, registerProvider, context().commonrepository(tablename));
+        clientAdapter.setCurrentlimit(20);
+        clientsView.setAdapter(clientAdapter);
+    }
+
 
     @Override
     public void setClient(CommonPersonObjectClient commonPersonObjectClient) {
