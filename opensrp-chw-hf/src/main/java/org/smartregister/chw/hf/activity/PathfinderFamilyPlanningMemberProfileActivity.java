@@ -175,37 +175,37 @@ public class PathfinderFamilyPlanningMemberProfileActivity extends CoreFamilyPla
 
         switch (fpMethod) {
             case PathfinderFamilyPlanningConstants.DBConstants.FP_POP:
-                fpMethodName = getString(com.adosa.opensrp.chw.fp.R.string.pop);
+                fpMethodName = getString(com.adosa.opensrp.chw.fp.R.string.fp_pop);
                 break;
             case PathfinderFamilyPlanningConstants.DBConstants.FP_COC:
-                fpMethodName = getString(com.adosa.opensrp.chw.fp.R.string.coc);
+                fpMethodName = getString(com.adosa.opensrp.chw.fp.R.string.fp_coc);
                 break;
             case PathfinderFamilyPlanningConstants.DBConstants.FP_FEMALE_CONDOM:
-                fpMethodName = getString(com.adosa.opensrp.chw.fp.R.string.female_condom);
+                fpMethodName = getString(com.adosa.opensrp.chw.fp.R.string.fp_female_condom);
                 break;
             case PathfinderFamilyPlanningConstants.DBConstants.FP_MALE_CONDOM:
-                fpMethodName = getString(com.adosa.opensrp.chw.fp.R.string.male_condom);
+                fpMethodName = getString(com.adosa.opensrp.chw.fp.R.string.fp_male_condom);
                 break;
             case PathfinderFamilyPlanningConstants.DBConstants.FP_INJECTABLE:
-                fpMethodName = getString(com.adosa.opensrp.chw.fp.R.string.injectable);
+                fpMethodName = getString(com.adosa.opensrp.chw.fp.R.string.fp_injection);
                 break;
             case PathfinderFamilyPlanningConstants.DBConstants.FP_IUD:
-                fpMethodName = getString(com.adosa.opensrp.chw.fp.R.string.iud);
+                fpMethodName = getString(com.adosa.opensrp.chw.fp.R.string.fp_iud);
                 break;
             case PathfinderFamilyPlanningConstants.DBConstants.FP_VASECTOMY:
-                fpMethodName = getString(com.adosa.opensrp.chw.fp.R.string.vasectomy);
+                fpMethodName = getString(com.adosa.opensrp.chw.fp.R.string.fp_vasectomy);
                 break;
             case PathfinderFamilyPlanningConstants.DBConstants.FP_TUBAL_LIGATION:
-                fpMethodName = getString(com.adosa.opensrp.chw.fp.R.string.tubal_ligation);
+                fpMethodName = getString(com.adosa.opensrp.chw.fp.R.string.fp_tubal_ligation);
                 break;
             case PathfinderFamilyPlanningConstants.DBConstants.FP_LAM:
-                fpMethodName = getString(com.adosa.opensrp.chw.fp.R.string.lam);
+                fpMethodName = getString(com.adosa.opensrp.chw.fp.R.string.fp_lam);
                 break;
             case PathfinderFamilyPlanningConstants.DBConstants.FP_IMPLANTS:
-                fpMethodName = getString(com.adosa.opensrp.chw.fp.R.string.implants);
+                fpMethodName = getString(com.adosa.opensrp.chw.fp.R.string.fp_implants);
                 break;
             case PathfinderFamilyPlanningConstants.DBConstants.FP_SDM:
-                fpMethodName = getString(com.adosa.opensrp.chw.fp.R.string.standard_day_method);
+                fpMethodName = getString(com.adosa.opensrp.chw.fp.R.string.fp_standard_day_method);
                 break;
             default:
                 fpMethodName = fpMethod;

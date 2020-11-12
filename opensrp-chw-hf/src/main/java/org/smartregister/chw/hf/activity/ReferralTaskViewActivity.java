@@ -278,7 +278,36 @@ public class ReferralTaskViewActivity extends BaseReferralTaskViewActivity imple
     @Override
     protected void getReferralDetails() {
         if (getPersonObjectClient() != null && getTask() != null) {
-            clientReferralProblem.setText(getTask().getFocus());
+
+
+
+            String taskFocus="";
+            switch (getTask().getFocus()){
+                case CoreConstants.TASKS_FOCUS.ANC_DANGER_SIGNS:
+                    taskFocus = getString(org.smartregister.chw.core.R.string.start_anc_clinic_referral_reason);
+                    break;
+                case CoreConstants.TASKS_FOCUS.FP_METHOD:
+                    taskFocus = getString(org.smartregister.chw.core.R.string.fp_method_referral_reason);
+                    break;
+                case CoreConstants.TASKS_FOCUS.PREGNANCY_TEST:
+                    taskFocus = getString(org.smartregister.chw.core.R.string.pregnancy_test_referral_reason);
+                    break;
+                case CoreConstants.TASKS_FOCUS.SUSPECTED_STI:
+                    taskFocus = getString(org.smartregister.chw.core.R.string.sti_referral_reason);
+                    break;
+                case CoreConstants.TASKS_FOCUS.SUSPECTED_HIV:
+                    taskFocus = getString(org.smartregister.chw.core.R.string.htc_referral_reason);
+                    break;
+                case CoreConstants.TASKS_FOCUS.CTC_SERVICES:
+                    taskFocus = getString(org.smartregister.chw.core.R.string.suspect_hiv_referral_reason);
+                    break;
+                default:
+                    taskFocus = getTask().getFocus();
+                    break;
+            }
+
+
+            clientReferralProblem.setText(taskFocus);
             String clientAge = (Utils.getTranslatedDate(Utils.getDuration(Utils.getValue(getPersonObjectClient().getColumnmaps(), DBConstants.KEY.DOB, false)), getBaseContext()));
             clientName.setText(getString(org.smartregister.chw.core.R.string.client_name_age_suffix, name, clientAge));
             referralDate.setText(org.smartregister.chw.core.utils.Utils.dd_MMM_yyyy.format(getTask().getExecutionStartDate().toDate()));

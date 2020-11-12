@@ -67,10 +67,10 @@ public class HfPathfinderReferralRegisterProvider extends BaseReferralRegisterPr
                 taskFocus = context.getString(R.string.sti_referral_reason);
                 break;
             case CoreConstants.TASKS_FOCUS.SUSPECTED_HIV:
-                taskFocus = context.getString(R.string.suspect_hiv_referral_reason);
+                taskFocus = context.getString(R.string.htc_referral_reason);
                 break;
             case CoreConstants.TASKS_FOCUS.CTC_SERVICES:
-                taskFocus = context.getString(R.string.htc_referral_reason);
+                taskFocus = context.getString(R.string.suspect_hiv_referral_reason);
                 break;
             default:
                 taskFocus = focus;
