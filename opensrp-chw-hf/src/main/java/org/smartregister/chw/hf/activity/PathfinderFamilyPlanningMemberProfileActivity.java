@@ -17,6 +17,7 @@ import org.smartregister.chw.core.utils.FpUtil;
 import org.smartregister.chw.fp.domain.FpMemberObject;
 import org.smartregister.chw.fp.util.FamilyPlanningConstants;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.adapter.PathfinderReferralCardViewAdapter;
 import org.smartregister.chw.hf.adapter.ReferralCardViewAdapter;
 import org.smartregister.chw.hf.contract.FamilyPlanningMemberProfileContract;
 import org.smartregister.chw.hf.interactor.HfFamilyPlanningProfileInteractor;
@@ -47,7 +48,7 @@ public class PathfinderFamilyPlanningMemberProfileActivity extends CoreFamilyPla
 
     public void setReferralTasks(Set<Task> taskList) {
         if (notificationAndReferralRecyclerView != null && taskList.size() > 0) {
-            RecyclerView.Adapter mAdapter = new ReferralCardViewAdapter(taskList, this, getCommonPersonObjectClient(), CoreConstants.REGISTERED_ACTIVITIES.FP_REGISTER_ACTIVITY);
+            RecyclerView.Adapter mAdapter = new PathfinderReferralCardViewAdapter(taskList, this, getCommonPersonObjectClient(), CoreConstants.REGISTERED_ACTIVITIES.FP_REGISTER_ACTIVITY);
             notificationAndReferralRecyclerView.setAdapter(mAdapter);
             notificationAndReferralLayout.setVisibility(View.VISIBLE);
             findViewById(R.id.view_notification_and_referral_row).setVisibility(View.VISIBLE);

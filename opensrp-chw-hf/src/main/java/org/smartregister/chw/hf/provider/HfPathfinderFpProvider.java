@@ -79,6 +79,9 @@ public class HfPathfinderFpProvider extends CorePathfinderFpProvider {
         referralTypes.add(CoreConstants.TASKS_FOCUS.FP_SIDE_EFFECTS);
         referralTypes.add(CoreConstants.TASKS_FOCUS.PREGNANCY_TEST);
         referralTypes.add(CoreConstants.TASKS_FOCUS.FP_METHOD);
+        referralTypes.add(CoreConstants.TASKS_FOCUS.SUSPECTED_HIV);
+        referralTypes.add(CoreConstants.TASKS_FOCUS.SUSPECTED_STI);
+        referralTypes.add(CoreConstants.TASKS_FOCUS.CTC_SERVICES);
 
         HfReferralUtils.displayReferralDayByReferralTypes(client, referralTypes, viewHolder.textViewReferralDay);
     }

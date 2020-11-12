@@ -310,6 +310,9 @@ public class PathfinderFamilyPlanningRegisterFragment extends BasePathfinderFpRe
         referralTypes.add(CoreConstants.TASKS_FOCUS.FP_SIDE_EFFECTS);
         referralTypes.add(CoreConstants.TASKS_FOCUS.PREGNANCY_TEST);
         referralTypes.add(CoreConstants.TASKS_FOCUS.FP_METHOD);
+        referralTypes.add(CoreConstants.TASKS_FOCUS.SUSPECTED_HIV);
+        referralTypes.add(CoreConstants.TASKS_FOCUS.SUSPECTED_STI);
+        referralTypes.add(CoreConstants.TASKS_FOCUS.CTC_SERVICES);
 
         return " " + CoreConstants.TABLE_NAME.FP_MEMBER + ".base_entity_id in ("
                 + getReferralDueFilter(CoreConstants.TABLE_NAME.FP_MEMBER, referralTypes)
