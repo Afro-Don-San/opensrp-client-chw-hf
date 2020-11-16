@@ -1,16 +1,13 @@
 package org.smartregister.chw.hf.fragment;
 
-import android.content.Intent;
 import android.database.Cursor;
 import android.os.Handler;
 import android.view.View;
 
-import com.google.android.gms.vision.barcode.Barcode;
+import androidx.annotation.NonNull;
 
 import org.apache.commons.lang3.StringUtils;
-import org.smartregister.AllConstants;
 import org.smartregister.chw.core.fragment.BaseReferralRegisterFragment;
-import org.smartregister.chw.core.provider.BaseReferralRegisterProvider;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.Utils;
 import org.smartregister.chw.hf.HealthFacilityApplication;
@@ -18,19 +15,20 @@ import org.smartregister.chw.hf.activity.ReferralTaskViewActivity;
 import org.smartregister.chw.hf.presenter.ReferralFragmentPresenter;
 import org.smartregister.chw.hf.provider.HfPathfinderReferralRegisterProvider;
 import org.smartregister.commonregistry.CommonFtsObject;
+import org.smartregister.commonregistry.CommonPersonObject;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
+import org.smartregister.commonregistry.CommonRepository;
 import org.smartregister.cursoradapter.RecyclerViewPaginatedAdapter;
 import org.smartregister.cursoradapter.SmartRegisterQueryBuilder;
 import org.smartregister.domain.Task;
 import org.smartregister.family.util.DBConstants;
-import org.smartregister.view.activity.BaseRegisterActivity;
 
 import java.util.Set;
 
 import timber.log.Timber;
 
-import static android.app.Activity.RESULT_OK;
 import static org.apache.commons.lang3.StringUtils.isEmpty;
+import static org.smartregister.chw.core.utils.CoreConstants.DB_CONSTANTS.FOR;
 
 public class ReferralRegisterFragment extends BaseReferralRegisterFragment {
 
@@ -114,12 +112,19 @@ public class ReferralRegisterFragment extends BaseReferralRegisterFragment {
 
 //          this.filters = filterString;
             this.joinTable = joinTableString;
-            this.mainCondition = mainConditionString + " AND referral_form_unique_id = '" + filterString + "'";
+            this.mainCondition = mainConditionString + " AND description = '" + filterString + "'";
 
-            countExecute();
 
-            filterandSortExecute();
-            setTotalPatients();
+            SmartRegisterQueryBuilder sqb = new SmartRegisterQueryBuilder(countSelect);
+            String sql = "SELECT * FROM ec_family_member_search JOIN task ON task.for = ec_family_member_search.object_id JOIN ec_referral ON ec_referral.entity_id = ec_family_member_search.object_id  WHERE task.business_status = 'Referred' and  ec_family_member_search.date_removed is null AND description = '" + filterString + "'";
+            Cursor cursor = commonRepository().rawCustomQueryForAdapter(sql);
+
+            if (cursor.getCount() > 0) {
+                cursor.moveToFirst();
+                ReferralTaskViewActivity.startReferralTaskViewActivity(getActivity(), getClientDetailsByBaseEntityID(cursor.getString(cursor.getColumnIndex(FOR))), getTask(cursor.getString(cursor.getColumnIndex("_id"))), CoreConstants.REGISTERED_ACTIVITIES.REFERRALS_REGISTER_ACTIVITY);
+                cursor.close();
+            }
+
 
         } else {
             super.filter(filterString, joinTableString, mainConditionString, qrCode);
@@ -172,5 +177,17 @@ public class ReferralRegisterFragment extends BaseReferralRegisterFragment {
                 cursor.close();
             }
         }
+    }
+
+
+    private CommonPersonObjectClient getClientDetailsByBaseEntityID(@NonNull String baseEntityId) {
+        CommonRepository commonRepository = org.smartregister.family.util.Utils.context().commonrepository(org.smartregister.family.util.Utils.metadata().familyMemberRegister.tableName);
+
+        final CommonPersonObject commonPersonObject = commonRepository.findByBaseEntityId(baseEntityId);
+        final CommonPersonObjectClient client =
+                new CommonPersonObjectClient(commonPersonObject.getCaseId(), commonPersonObject.getDetails(), "");
+        client.setColumnmaps(commonPersonObject.getColumnmaps());
+        return client;
+
     }
 }

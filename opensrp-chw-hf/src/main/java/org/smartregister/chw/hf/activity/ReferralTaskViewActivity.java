@@ -160,6 +160,16 @@ public class ReferralTaskViewActivity extends BaseReferralTaskViewActivity imple
             }
         });
 
+        if(getTask().getFocus().equals(CoreConstants.TASKS_FOCUS.FP_METHOD)){
+            servicesSpinner.setVisibility(View.VISIBLE);
+        }else{
+            try {
+                servicesArray.getJSONObject(0);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
 
         // Creating adapter for spinner
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, servicesList);
