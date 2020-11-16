@@ -13,12 +13,15 @@
         android:text="@string/mark_as_done_message"/>
     <TextView
         android:layout_marginStart="16dp"
+        android:id="@+id/spinner_title"
         android:layout_marginTop="8dp"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/fp_method_provided"/>
     <Spinner
         android:layout_marginStart="8dp"
+        android:visibility="gone"
         android:id="@+id/spinner"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"

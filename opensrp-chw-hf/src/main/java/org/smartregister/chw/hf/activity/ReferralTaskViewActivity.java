@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
@@ -126,6 +127,7 @@ public class ReferralTaskViewActivity extends BaseReferralTaskViewActivity imple
         final View customLayout = getLayoutInflater().inflate(R.layout.dialogue_close_referral, null);
         builder.setView(customLayout);
 
+        TextView servicesSpinnerTitile = customLayout.findViewById(R.id.spinner_title);
         Spinner servicesSpinner = (Spinner) customLayout.findViewById(R.id.spinner);
         JSONObject services;
         List<String> servicesList = new ArrayList<String>();
@@ -162,6 +164,7 @@ public class ReferralTaskViewActivity extends BaseReferralTaskViewActivity imple
 
         if(getTask().getFocus().equals(CoreConstants.TASKS_FOCUS.FP_METHOD)){
             servicesSpinner.setVisibility(View.VISIBLE);
+            servicesSpinnerTitile.setVisibility(View.VISIBLE);
         }else{
             try {
                 servicesArray.getJSONObject(0);
