@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Supervisor</string>
     <string name="logo">logo</string>
-    <string name="login_title">Pathfinder\nSupervisor Application</string>
-    <string name="nav_logo">Pathfinder Supervisor Application</string>
+    <string name="login_title">Supervisor Application</string>
+    <string name="nav_logo">Supervisor Application</string>
     <string name="due_only">Referred</string>
 
     <string name="clicked_sick_child">You have clicked the sick child follow-up action</string>
