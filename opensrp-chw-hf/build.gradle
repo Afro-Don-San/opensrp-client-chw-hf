@@ -34,8 +34,8 @@ android {
         versionName "1.2.12"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
-        buildConfigField "String", 'opensrp_url', '"http://172.105.87.198:8082/opensrp/"'
-        buildConfigField "String", 'opensrp_url_debug', '"http://172.105.82.27:8082/opensrp/"'
+        buildConfigField "String", 'opensrp_url', '"http://78.47.168.113:8080/opensrp/"'
+        buildConfigField "String", 'opensrp_url_debug', '"http://162.55.56.68:8080/opensrp/"'
 //        buildConfigField "String", 'opensrp_url_debug', '"https://boresha-afya-stage.smartregister.org/opensrp/"'
 //        buildConfigField "String", 'opensrp_url_debug', '"https://ba-unified-stage.smartregister.org/opensrp/"'
         buildConfigField "boolean", 'SUPPORT_QR', 'true'

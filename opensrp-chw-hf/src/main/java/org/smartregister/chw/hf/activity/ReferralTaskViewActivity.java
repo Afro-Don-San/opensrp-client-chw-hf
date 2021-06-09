@@ -225,8 +225,12 @@ public class ReferralTaskViewActivity extends BaseReferralTaskViewActivity imple
             baseEvent.addObs((new Obs()).withFormSubmissionField(CoreConstants.FORM_CONSTANTS.FORM_SUBMISSION_FIELD.REFERRAL_TASK_PREVIOUS_BUSINESS_STATUS).withValue(getTask().getBusinessStatus())
                     .withFieldCode(CoreConstants.FORM_CONSTANTS.FORM_SUBMISSION_FIELD.REFERRAL_TASK_PREVIOUS_BUSINESS_STATUS).withFieldType("formsubmissionField").withFieldDataType("text").withParentCode("").withHumanReadableValues(new ArrayList<>()));
 
-            baseEvent.addObs((new Obs()).withFormSubmissionField("service_provided").withValue(serviceProvided.getString("key"))
-                    .withFieldCode("service_provided").withFieldType("formsubmissionField").withFieldDataType("text").withParentCode("").withHumanReadableValues(Arrays.asList(new String[]{serviceProvided.getString("text")})));
+            try {
+                baseEvent.addObs((new Obs()).withFormSubmissionField("service_provided").withValue(serviceProvided.getString("key"))
+                        .withFieldCode("service_provided").withFieldType("formsubmissionField").withFieldDataType("text").withParentCode("").withHumanReadableValues(Arrays.asList(new String[]{serviceProvided.getString("text")})));
+            }catch (Exception e){
+                Timber.e(e);
+            }
 
             org.smartregister.chw.hf.utils.JsonFormUtils.tagSyncMetadata(Utils.context().allSharedPreferences(), baseEvent);// tag docs
 
